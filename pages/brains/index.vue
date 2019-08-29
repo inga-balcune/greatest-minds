@@ -31,7 +31,7 @@ export default {
   created() {
     this.loadingBrainsData = true
     this.startBrainsLoadingTime = new Date()
-    axios.get('https://assignment.siteimprove.com/api/persons')
+    axios.get('http://assignment.siteimprove.com/api/persons')
           .then(res => {
                 this.endBrainsLoadingTime = new Date()
                 let brainsLoadingTime = (this.startBrainsLoadingTime - this.endBrainsLoadingTime) / 1000
@@ -49,7 +49,8 @@ export default {
                 }
               })
           .catch((e) => {
-            error({ statusCode: 404, message: 'Post not found' })
+            console.log(e)
+            // error({ statusCode: 404, message: 'Post not found' })
           })
     }
 }
