@@ -31,7 +31,7 @@ export default {
   created() {
     this.loadingBrainsData = true
     this.startBrainsLoadingTime = new Date()
-    axios.get('http://assignment.siteimprove.com/api/persons')
+    axios.get('https://assignment.siteimprove.com/api/persons')
           .then(res => {
                 this.endBrainsLoadingTime = new Date()
                 let brainsLoadingTime = (this.startBrainsLoadingTime - this.endBrainsLoadingTime) / 1000

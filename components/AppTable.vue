@@ -118,7 +118,7 @@ export default {
     async getChildren(id) {
       if(id) {
         this.startLoadingDataTime = performance.now()
-        const childrenData = await axios.get(`http://assignment.siteimprove.com/api/persondetails/${id}`)
+        const childrenData = await axios.get(`https://assignment.siteimprove.com/api/persondetails/${id}`)
         // create a nested array with children placing them in positions in array based on its parent's id
         this.$set(this.children, id, childrenData.data)
         this.endLoadingDataTime = performance.now()
