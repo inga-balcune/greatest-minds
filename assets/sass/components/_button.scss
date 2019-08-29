@@ -1,0 +1,32 @@
+.page-button {
+    line-height: 2.2rem;
+    overflow: hidden;
+    padding: 1.8rem 4rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+    background-color: $color-blue;
+    color: $color-white;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    border-image-width: 0;
+    user-select: none;
+    transition: all .1s ease-in-out;
+    border-radius: .2rem;
+    box-shadow: 0 1rem 2rem rgba($color-primary, 0.2);
+
+    @include respond(tab-land) { 
+      padding: 1.4rem 2.5rem;
+      font-size: 2rem;
+    }
+
+    &:hover, :visited, :link, :active {
+      text-decoration: none;
+      background-color: darken($color-blue, 10%)
+    }
+
+    &:focus {
+      border-style: none;
+    }
+
+}
