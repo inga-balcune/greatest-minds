@@ -10,46 +10,16 @@ export default {
 
 <style lang='scss'>
 
-// .spinning {
-//   display: inline-block;
-//   text-align: center;
-//   width: 5rem;
-//   height: 5rem;
-//   border: .3rem solid rgba($color-primary,.4);
-//   border-radius: 50%;
-//   border-top-color: $color-primary;
-//   animation: spin .8s ease-in-out infinite;
-//   -webkit-animation: spin .8s ease-in-out infinite;
+// .spinning,
+// .spinning:after {
+//   box-sizing: border-box;
 // }
-
-// @keyframes spin {
-//   to { -webkit-transform: rotate(360deg); }
-// }
-// @-webkit-keyframes spin {
-//   to { -webkit-transform: rotate(360deg); }
-// }
-
-
-
-// $spinning-size: 20px;
-// $spinning-color: #dc1928;
-// $spinning-border-size: 2px;
-
-
-
-// spinning
-
-.spinning,
-.spinning:after {
-  // position: relative;
-  box-sizing: border-box;
-}
 
 .spinning {
   width: 5rem;
   height: 5rem;
   display: inline-block;
-  // color: $spinning-color;
+  box-sizing: border-box;
   
   &:after {
     content: "";
@@ -62,6 +32,11 @@ export default {
     background: transparent;
     
     animation: ball-clip-rotate .8s ease-in-out infinite;
+  }
+
+  @include respond(phone) {
+    width: 3.5rem;
+    height: 3.5rem;
   }
 }
 

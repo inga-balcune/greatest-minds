@@ -1,10 +1,10 @@
 <template>
   <div class='brains-section'>
     <header>
-      <h1 class='brains-section__title'>Brains</h1>
+      <h1 class='brains-section__title'>Great Minds</h1>
     </header>
     <main>
-      <AppTable :brains='brains' :loadingBrains='loadingBrainsData'/>
+      <AppMainTable :brains='brains' :loadingBrains='loadingBrainsSpinner' :minSpinnerRunTime='minSpinnerRunTime' />
     </main>
   </div>
 </template>
@@ -14,44 +14,46 @@ import axios from 'axios'
 export default {
   head () {
     return {
-      title: 'Brains - Assignment solution',
+      title: 'Great Minds From Throughout History',
       meta: [
-        { hid: 'description', name: 'description', content: 'The assignment solution that includes a table of some of the greatest brains of all time.' }
+        { hid: 'description', name: 'description', content: 'Detailed information about some of the greatest minds of all time and their children.' }
       ]
     }
   },
   data() {
     return {
-      loadingBrainsData: false,
+      loadingBrainsSpinner: false,
       brains: [],
       startBrainsLoadingTime: null,
-      endBrainsLoadingTime: null
+      endBrainsLoadingTime: null,
+      minSpinnerRunTime: 3000
     }
   },
   created() {
-    this.loadingBrainsData = true
+    // measure how long it takes to load brains
     this.startBrainsLoadingTime = new Date()
-    axios.get('http://assignment.siteimprove.com/api/persons')
+    axios.get('https://my-json-server.typicode.com/inga-balcune/api/persons')
           .then(res => {
                 this.endBrainsLoadingTime = new Date()
-                let brainsLoadingTime = (this.startBrainsLoadingTime - this.endBrainsLoadingTime) / 1000
-                console.log(brainsLoadingTime)
-                if (brainsLoadingTime < 3) {
+                let brainsLoadingTime = this.endBrainsLoadingTime - this.startBrainsLoadingTime
+
+                // show the spinner for total of 3sec if brainsLoadingTime is less than 3 sec
+                if (brainsLoadingTime < this.minSpinnerRunTime) {
                   return setTimeout(() => {
                   this.brains = res.data
-                  this.loadingBrainsData = false
-                  console.log('Brains load less than 3 sec')
-                  }, 3000)
+                  this.loadingBrainsSpinner = false
+                  }, this.minSpinnerRunTime - brainsLoadingTime)
                 } else {
                   this.brains = res.data
-                  this.loadingBrainsData = false
-                  console.log('Brains load more than 3 sec')
+                  this.loadingBrainsSpinner = false
                 }
               })
-          .catch((e) => {
-            console.log(e)
-            // error({ statusCode: 404, message: 'Post not found' })
+          .catch(e => {
+            this.$router.replace('/error')
           })
+    },
+    mounted() {
+      this.loadingBrainsSpinner = true
     }
 }
   
@@ -60,11 +62,8 @@ export default {
 
 <style lang="scss" scoped>
 
-.brains-section {
-  
-  &__title {
-    text-align: center;
-  }
+.brains-section__title {
+  text-align: center;
 }
 
 </style>

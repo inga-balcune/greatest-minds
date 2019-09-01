@@ -1,6 +1,6 @@
-# siteimprove2
+# brains
 
-> Inga&#39;s Siteimprove frontend assignment
+> Frontend assignment
 
 ## Build Setup
 

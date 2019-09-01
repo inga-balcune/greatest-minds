@@ -13,7 +13,6 @@
           <td class='inner-table__body-item'>{{child.YearOfBirth}}</td>
           <td class='inner-table__body-item'>{{child.Mother}}</td>
         </tr>
-        <p>{{typeof brainId}}</p>
       </tbody> 
     </table>
 </template>
@@ -45,22 +44,22 @@ export default {
   @include respond(phone) {
     width: 100%;
   }
-   
-  &__heading {
+}
+
+.inner-table__heading {
     color: $color-white;
     font-weight: 400;
     line-height: 1.8rem;
     text-transform: uppercase;
     background-color: $color-red;
     padding: 1.5rem 1rem;
-  }
+}
 
-  &__body-item {
+.inner-table__body-item {
     background-color: $color-white;
     border: .1rem solid $color-secondary;
     padding: 1rem;
   }
-}
 
 .tableShowing {
   display: table;

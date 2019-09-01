@@ -22,7 +22,8 @@
 
     &:hover, :visited, :link, :active {
       text-decoration: none;
-      background-color: darken($color-blue, 10%)
+      background-color: darken($color-blue, 10%);
+      color: $color-white;
     }
 
     &:focus {

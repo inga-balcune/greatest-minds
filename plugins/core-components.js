@@ -1,13 +1,11 @@
 import Vue from 'vue'
-import AppTable from '@/components/AppTable'
-import AppInnerTable from '@/components/AppInnerTable'
+import AppMainTable from '@/components/AppMainTable'
+import AppChildrenTable from '@/components/AppChildrenTable'
 import AppSpinner from '@/components/AppSpinner'
 
 
-
-
-Vue.component('AppTable', AppTable)
-Vue.component('AppInnerTable', AppInnerTable)
+Vue.component('AppMainTable', AppMainTable)
+Vue.component('AppChildrenTable', AppChildrenTable)
 Vue.component('AppSpinner', AppSpinner)
 
 
