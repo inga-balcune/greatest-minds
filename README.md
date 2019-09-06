@@ -1,4 +1,4 @@
-# brains
+# Greatest Minds
 
 > Frontend assignment
 
